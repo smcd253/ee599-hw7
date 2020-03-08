@@ -11,7 +11,7 @@ University of Southern California
 4. Topological sort is defined for **directed acyclic graphs (DAGs).**
 
 ## Q2 - Floyd-Warshall Algorithm
-**Ref: Pseudocode**
+**Code (Iterative)**
 
 ```c++
 for (int k = 0; k < weight_.size(); k++) 
@@ -25,6 +25,8 @@ for (int k = 0; k < weight_.size(); k++)
     }
 }
 ```
+**Graph**
+![Floyd-Warshall Algorithm Example Graph](graph-floyd-warshall.png)
 
 | k = 0 	| 1      	| 2      	| 3      	| 4      	| 5      	|
 |-------	|--------	|--------	|--------	|--------	|--------	|
@@ -47,7 +49,7 @@ for (int k = 0; k < weight_.size(); k++)
 
 | k = 2 	| 1      	| 2      	| 3      	| 4      	| 5      	|
 |-------	|--------	|--------	|--------	|--------	|--------	|
-| 1     	| 0      	| 10     	| *60* 	    | 30     	| 100    	|
+| 1     	| 0      	| 10     	| 60* 	    | 30     	| 100    	|
 | 2     	| &infin; 	| 0      	| 50     	| &infin; 	| &infin; 	|
 | 3     	| &infin; 	| &infin; 	| 0      	| &infin; 	| 10     	|
 | 4     	| &infin; 	| &infin; 	| 20     	| 0      	| 60     	|
@@ -57,8 +59,8 @@ for (int k = 0; k < weight_.size(); k++)
 
 | k = 3 	| 1      	| 2      	| 3      	| 4      	| 5      	|
 |-------	|--------	|--------	|--------	|--------	|--------	|
-| 1     	| 0      	| 10     	| 60 	    | 30     	| *70*    	|
-| 2     	| &infin; 	| 0      	| 50     	| &infin; 	| *60* 	    |
+| 1     	| 0      	| 10     	| 60 	    | 30     	| 70*    	|
+| 2     	| &infin; 	| 0      	| 50     	| &infin; 	| 60* 	    |
 | 3     	| &infin; 	| &infin; 	| 0      	| &infin; 	| 10     	|
 | 4     	| &infin; 	| &infin; 	| 20     	| 0      	| 60     	|
 | 5     	| &infin; 	| &infin; 	| &infin; 	| &infin; 	| 0      	|
@@ -67,7 +69,7 @@ for (int k = 0; k < weight_.size(); k++)
 
 | k = 4 	| 1      	| 2      	| 3      	| 4      	| 5      	|
 |-------	|--------	|--------	|--------	|--------	|--------	|
-| 1     	| 0      	| 10     	| *50* 	    | 30     	| 70    	|
+| 1     	| 0      	| 10     	| 50* 	    | 30     	| 70    	|
 | 2     	| &infin; 	| 0      	| 50     	| &infin; 	| 60 	    |
 | 3     	| &infin; 	| &infin; 	| 0      	| &infin; 	| 10     	|
 | 4     	| &infin; 	| &infin; 	| 20     	| 0      	| 60     	|
@@ -77,7 +79,7 @@ for (int k = 0; k < weight_.size(); k++)
 
 | k = 5 	| 1      	| 2      	| 3      	| 4      	| 5      	|
 |-------	|--------	|--------	|--------	|--------	|--------	|
-| 1     	| 0      	| 10     	| *50* 	    | 30     	| 70    	|
+| 1     	| 0      	| 10     	| 50 	    | 30     	| 70    	|
 | 2     	| &infin; 	| 0      	| 50     	| &infin; 	| 60 	    |
 | 3     	| &infin; 	| &infin; 	| 0      	| &infin; 	| 10     	|
 | 4     	| &infin; 	| &infin; 	| 20     	| 0      	| 60     	|
@@ -85,4 +87,3 @@ for (int k = 0; k < weight_.size(); k++)
 
 *Updated Distances = {}*<br>
 
-![Graph to run Floyd-Warshall Algorithm On](graph-floyd-warshall.png)
