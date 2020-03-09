@@ -12,11 +12,26 @@ int main() {
     {6, {3}}
     };
     Graph g(vertices);
-    std::map<int, int> dist = g.shortest_distance(0);
-    printf("dist = ");
-    for(auto n : dist)
+    int root = 0;
+    std::map<int, int> dist = g.shortest_distance(root);
+    printf("distance to all nodes from node %d: \n", root);
+    for(auto& n : dist)
     {
         printf("distance to %d = %d\n ", n.first, n.second);
+    }
+    printf("\n");
+    
+    std::map<int, std::vector<int>> paths = g.shortest_path(root);
+
+    printf("distance to all nodes from node %d: \n", root);
+    for(auto& n : paths)
+    {
+        printf("path to %d: ", n.first);
+        for(auto& p : n.second)
+        {
+            printf("%d ", p);
+        }
+        printf("\n");
     }
     printf("\n");
 }

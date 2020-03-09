@@ -5,13 +5,12 @@
 std::map<int, int> Graph::shortest_distance(int vertex) 
 {
     // bfs variables
-    std::vector<int> visited;
-    visited.reserve(this->v_.size());
+    std::vector<int> visited(this->v_.size(), 0);
     std::queue<int> q;
     q.push(vertex);
     visited[vertex] = 1;
 
-    // shortest path variables
+    // shortest distance variables
     std::map<int, int> dist;
     for(auto& d : dist)
     {
@@ -31,36 +30,25 @@ std::map<int, int> Graph::shortest_distance(int vertex)
                 visited[n] = 1;
                 q.push(n);
 
-                // modify path tree if distance is shorter
-                // than old distance
-                int d = dist[cur] + 1;
-                if(d < dist[n])
-                {
-                    dist[n] = d;
-                }
+                dist[n] = dist[cur] + 1;
             }
         }
     }
-
+    
     return dist;
 }
 
 std::map<int, std::vector<int>> Graph::shortest_path(int vertex) 
 {
     // bfs variables
-    std::vector<int> visited;
-    visited.reserve(this->v_.size());
+    std::vector<int> visited(this->v_.size(), 0);
     std::queue<int> q;
     q.push(vertex);
     visited[vertex] = 1;
 
     // shortest path variables
-    std::map<int, int> dist;
-    for(auto& d : dist)
-    {
-        d.second = INT_MAX;
-    }
     std::map<int, std::vector<int>> path_map;
+    path_map[vertex].push_back(vertex);
 
     // bfs
     while (!q.empty()) 
@@ -74,16 +62,9 @@ std::map<int, std::vector<int>> Graph::shortest_path(int vertex)
             {
                 visited[n] = 1;
                 q.push(n);
-
-                // modify path tree if distance is shorter
-                // than old distance to 
-                int d = dist[cur] + 1;
-                if(d < dist[n])
-                {
-                    dist[n] = d;
-                    path_map[n] = path_map[cur];
-                    path_map[n].push_back(n);
-                }
+ 
+                path_map[n] = path_map[cur];
+                path_map[n].push_back(n);
             }
         }
     }
