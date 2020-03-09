@@ -8,39 +8,14 @@
 #include <set>          // std::set<int>
 #include <map>          // std::map<int std::set<int>>
 #include <iterator>     // std::set::iterator
+#ifdef __linux__ 
+    #include <climits>      // INT_MAX (linux)
 
+#elif __APPLE__
+    #include <limits>       // INT_MAX (darwin)
+#endif
 
 /************************* Problem 3 *************************/
-class TreeNode 
-{
-    private:
-        
-
-    public:
-        int vertex;
-        TreeNode* parent;
-        
-        TreeNode() : vertex(-1) , parent(NULL) {}
-        TreeNode(int x) : vertex(x) , parent(NULL) {}
-        TreeNode(int x, TreeNode* p) : vertex(x), parent(p) {}
-
-        // assignment overload
-        TreeNode* operator = (int rhs)
-        {
-            TreeNode* result = nullptr;
-            result->vertex = rhs;
-            return result;            
-        }
-
-        TreeNode* operator = (std::pair<int, TreeNode*> rhs)
-        {
-            TreeNode* result = nullptr;
-            result->vertex = rhs.first;
-            result->parent = rhs.second;
-            return result; 
-        }
-};
-
 class Graph 
 {
     public:

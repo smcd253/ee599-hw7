@@ -13,6 +13,10 @@ std::map<int, int> Graph::shortest_distance(int vertex)
 
     // shortest path variables
     std::map<int, int> dist;
+    for(auto& d : dist)
+    {
+        d.second = INT_MAX;
+    }
 
     // bfs
     while (!q.empty()) 
@@ -28,9 +32,9 @@ std::map<int, int> Graph::shortest_distance(int vertex)
                 q.push(n);
 
                 // modify path tree if distance is shorter
-                // than old distance to 
+                // than old distance
                 int d = dist[cur] + 1;
-                if(d > dist[n])
+                if(d < dist[n])
                 {
                     dist[n] = d;
                 }
@@ -52,8 +56,10 @@ std::map<int, std::vector<int>> Graph::shortest_path(int vertex)
 
     // shortest path variables
     std::map<int, int> dist;
-    TreeNode* path_tree[this->v_.size() - 1];
-    path_tree[0]->vertex = vertex;
+    for(auto& d : dist)
+    {
+        d.second = INT_MAX;
+    }
     std::map<int, std::vector<int>> path_map;
 
     // bfs
@@ -72,24 +78,13 @@ std::map<int, std::vector<int>> Graph::shortest_path(int vertex)
                 // modify path tree if distance is shorter
                 // than old distance to 
                 int d = dist[cur] + 1;
-                if(d > dist[n])
+                if(d < dist[n])
                 {
-                    path_tree[n] = (n, cur);
                     dist[n] = d;
+                    path_map[n] = path_map[cur];
+                    path_map[n].push_back(n);
                 }
             }
-        }
-    }
-
-    // build path_map
-    // Runtime = &theta;(n + n)
-    for (TreeNode* v : path_tree)
-    {
-        TreeNode* cur = v;
-        while(cur->first != vertex)
-        {
-            path_map[n].push_back(cur->first);
-            cur = cur->parent;
         }
     }
 
