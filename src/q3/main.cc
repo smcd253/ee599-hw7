@@ -12,11 +12,11 @@ int main() {
     {6, {3}}
     };
     Graph g(vertices);
-    std::vector<int> dfs_v = g.dfs(0);
-    printf("dfs_v = ");
-    for(auto n : dfs_v)
+    std::map<int, int> dist = g.shortest_distance(0);
+    printf("dist = ");
+    for(auto n : dist)
     {
-        printf("%d ", n);
+        printf("distance to %d = %d\n ", n.first, n.second);
     }
     printf("\n");
 }
