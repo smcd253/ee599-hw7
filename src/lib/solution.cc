@@ -73,7 +73,6 @@ std::map<int, std::vector<int>> Graph::shortest_path(int vertex)
 }
 
 /************************* Problem 4 *************************/
-// Kahn's Algorithm
 std::pair<std::vector<int>, std::vector<int>> Graph::topological_sort()
 {
     int n = this->v_.size();

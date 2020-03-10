@@ -27,6 +27,7 @@ class Graph
         std::map<int, int> shortest_distance(int vertex);
         std::map<int, std::vector<int>> shortest_path(int vertex);
         /************************* Problem 4 *************************/
+        // Kahn's Algorithm
         std::pair<std::vector<int>, std::vector<int>> topological_sort();
 };
 
