@@ -125,3 +125,29 @@ std::pair<std::vector<int>, std::vector<int>> Graph::topological_sort()
 
     return result;
 }
+
+/************************* Problem 5 *************************/
+std::vector<bool> nodes_in_path(Graph& g)
+{
+    std::vector<bool> result(g.v_.size(), false);
+    int num_nodes = g.v_.size();
+    // get shortest distances from node 0 to all other nodes
+    std::map<int, int> dist_0 = g.shortest_distance(0);
+    // get shortest distances from node N-1 to all other nodes
+    std::map<int, int> dist_nmin1 = g.shortest_distance(num_nodes - 1);
+
+    // check to see if distance from node 0 to node i + distance from 
+    // node i to node N-1 equals the distance from node 0 to node N-1
+    int d_0_to_nmin1 = dist_0[num_nodes - 1];
+    for (int i = 0; i < num_nodes; i++)
+    {
+        int d_0_to_i = dist_0[i];
+        int nmin1_to_i = dist_nmin1[i];
+        if(d_0_to_i + nmin1_to_i == d_0_to_nmin1)
+        {
+            result[i] = true;
+        }
+    }
+
+    return result;
+}

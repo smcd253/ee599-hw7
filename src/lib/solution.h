@@ -30,6 +30,11 @@ class Graph
         std::pair<std::vector<int>, std::vector<int>> topological_sort();
 };
 
-
+/************************* Problem 5 *************************/
+/**
+ * Evaluates which nodes in the graph lie in the shortest distance path
+ * between node 0 and node N-1
+ * */
+std::vector<bool> nodes_in_path(Graph& g);
 #endif
 
