@@ -92,7 +92,7 @@ for (int k = 0; k < weight_.size(); k++)
 **Compilation Instructions**
 ```bash
 # run main target (provided sample input)
-bazel run q3:main
+bazel run src/q3:main
 
 # run test target
 bazel run tests:tests
@@ -113,7 +113,7 @@ Runtime = &theta;(n + m) --> O(n)
 **Compilation Instructions**
 ```bash
 # run main target (provided sample input)
-bazel run q4:main
+bazel run src/q4:main
 
 # run test target
 bazel run tests:tests
@@ -129,7 +129,7 @@ Runtime = &theta;(n + n + n + m) --> O(n)
 **Compilation Instructions**
 ```bash
 # run main target (provided sample input)
-bazel run q5:main
+bazel run src/q5:main
 
 # run test target
 bazel run tests:tests

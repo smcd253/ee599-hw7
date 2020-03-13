@@ -96,7 +96,7 @@ std::map<int, std::vector<int>> Graph::shortest_path(int vertex)
 
 /************************* Problem 4 *************************/
 // Runtime = &theta;(n + n + n + m) --> O(n)
-std::pair<std::vector<int>, std::vector<int>> Graph::topological_sort()
+std::pair<std::set<int>, std::vector<int>> Graph::topological_sort()
 {
     // input validation
     if(this->v_.empty())
@@ -105,9 +105,9 @@ std::pair<std::vector<int>, std::vector<int>> Graph::topological_sort()
     }
 
     int n = this->v_.size();
-    std::vector<int> root_result = {};
+    std::set<int> root_result = {};
     std::vector<int> top_result(n, -1);
-    std::pair<std::vector<int>, std::vector<int>> result(root_result, top_result);
+    std::pair<std::set<int>, std::vector<int>> result(root_result, top_result);
 
     // count incoming edges for each node
     std::vector<int> deg(n, 0);
@@ -128,7 +128,7 @@ std::pair<std::vector<int>, std::vector<int>> Graph::topological_sort()
         if(deg[i] == 0)
         {
             q.push(i);  // O(1)
-            result.first.push_back(i); // O(n)
+            result.first.insert(i); // O(n)
         }
     }
     

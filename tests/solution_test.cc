@@ -238,10 +238,10 @@ TEST(GRAPH_TOPOLOGICAL_SORT, STANDARD)
     };
     Graph g(vertices);
 
-    std::pair<std::vector<int>, std::vector<int>> actual = g.topological_sort();
-    std::vector<int> expected_roots = {7};
+    std::pair<std::set<int>, std::vector<int>> actual = g.topological_sort();
+    std::set<int> expected_roots = {7};
     std::vector<int> expected_top_sort = {7, 5, 6, 2, 3, 4, 1, 0};
-    std::pair<std::vector<int>, std::vector<int>> expected(expected_roots, expected_top_sort);
+    std::pair<std::set<int>, std::vector<int>> expected(expected_roots, expected_top_sort);
 
     EXPECT_EQ(actual, expected);
 }
@@ -251,10 +251,10 @@ TEST(GRAPH_TOPOLOGICAL_SORT, EMPTY)
     std::map<int, std::set<int>> vertices;
     Graph g(vertices);
 
-    std::pair<std::vector<int>, std::vector<int>> actual = g.topological_sort();
-    std::vector<int> expected_roots = {};
+    std::pair<std::set<int>, std::vector<int>> actual = g.topological_sort();
+    std::set<int> expected_roots = {};
     std::vector<int> expected_top_sort = {};
-    std::pair<std::vector<int>, std::vector<int>> expected(expected_roots, expected_top_sort);
+    std::pair<std::set<int>, std::vector<int>> expected(expected_roots, expected_top_sort);
 
     EXPECT_EQ(actual, expected);
 }
@@ -273,10 +273,10 @@ TEST(GRAPH_TOPOLOGICAL_SORT, DISCONNECTED)
     };
     Graph g(vertices);
 
-    std::pair<std::vector<int>, std::vector<int>> actual = g.topological_sort();
-    std::vector<int> expected_roots = {2, 3, 7};
+    std::pair<std::set<int>, std::vector<int>> actual = g.topological_sort();
+    std::set<int> expected_roots = {2, 3, 7};
     std::vector<int> expected_top_sort = {2, 3, 7, 1, 5, 6, 0, 4};
-    std::pair<std::vector<int>, std::vector<int>> expected(expected_roots, expected_top_sort);
+    std::pair<std::set<int>, std::vector<int>> expected(expected_roots, expected_top_sort);
 
     EXPECT_EQ(actual, expected);
 }
@@ -292,10 +292,10 @@ TEST(GRAPH_TOPOLOGICAL_SORT, CYCLIC)
     };
     Graph g(vertices);
 
-    std::pair<std::vector<int>, std::vector<int>> actual = g.topological_sort();
-    std::vector<int> expected_roots = {};
+    std::pair<std::set<int>, std::vector<int>> actual = g.topological_sort();
+    std::set<int> expected_roots = {};
     std::vector<int> expected_top_sort = {};
-    std::pair<std::vector<int>, std::vector<int>> expected(expected_roots, expected_top_sort);
+    std::pair<std::set<int>, std::vector<int>> expected(expected_roots, expected_top_sort);
 
     EXPECT_EQ(actual, expected);
 }
@@ -314,10 +314,10 @@ TEST(GRAPH_TOPOLOGICAL_SORT, HAS_CYCLE)
     };
     Graph g(vertices);
 
-    std::pair<std::vector<int>, std::vector<int>> actual = g.topological_sort();
-    std::vector<int> expected_roots = {7};
+    std::pair<std::set<int>, std::vector<int>> actual = g.topological_sort();
+    std::set<int> expected_roots = {7};
     std::vector<int> expected_top_sort = {};
-    std::pair<std::vector<int>, std::vector<int>> expected(expected_roots, expected_top_sort);
+    std::pair<std::set<int>, std::vector<int>> expected(expected_roots, expected_top_sort);
 
     EXPECT_EQ(actual, expected);
 }
@@ -336,10 +336,10 @@ TEST(GRAPH_TOPOLOGICAL_SORT, UNDIRECTED)
     };
     Graph g(vertices);
 
-    std::pair<std::vector<int>, std::vector<int>> actual = g.topological_sort();
-    std::vector<int> expected_roots = {};
+    std::pair<std::set<int>, std::vector<int>> actual = g.topological_sort();
+    std::set<int> expected_roots = {};
     std::vector<int> expected_top_sort = {};
-    std::pair<std::vector<int>, std::vector<int>> expected(expected_roots, expected_top_sort);
+    std::pair<std::set<int>, std::vector<int>> expected(expected_roots, expected_top_sort);
 
     EXPECT_EQ(actual, expected);
 }

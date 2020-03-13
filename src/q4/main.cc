@@ -13,7 +13,7 @@ int main() {
     {0, {}}
     };
     Graph g(vertices);
-    std::pair<std::vector<int>, std::vector<int>> top = g.topological_sort();
+    std::pair<std::set<int>, std::vector<int>> top = g.topological_sort();
     printf("topological sort results:\n");
     printf("Root nodes: ");
     for(auto& r : top.first)
