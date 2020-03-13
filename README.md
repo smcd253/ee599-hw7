@@ -1,7 +1,7 @@
 # EE599 HW6 - Graphs and Various Sorting Algorithms
 
 Created - Spencer McDonough : 02/27/2020<br>
-Last Modified - Spencer McDonough : 02/27/2020<br>
+Last Modified - Spencer McDonough : 03/13/2020<br>
 University of Southern California
 
 ## Q1 - Graph-Related Facts
@@ -25,7 +25,8 @@ for (int k = 0; k < weight_.size(); k++)
     }
 }
 ```
-**Graph**
+
+**Graph** <br>
 ![Floyd-Warshall Algorithm Example Graph](graph-floyd-warshall.png)
 
 | k = 0 	| 1      	| 2      	| 3      	| 4      	| 5      	|
@@ -87,3 +88,56 @@ for (int k = 0; k < weight_.size(); k++)
 
 *Updated Distances = {}*<br>
 
+## Q3 - Shortest Path Using BFS
+**Compilation Instructions**
+```bash
+# run main target (provided sample input)
+bazel run q3:main
+
+# run test target
+bazel run tests:tests
+```
+
+**Runtime Analysis**
+```c++
+std::map<int, int> Graph::shortest_distance(int vertex) 
+```
+Runtime = &theta;(n + m) --> O(n)
+
+```c++
+std::map<int, std::vector<int>> Graph::shortest_path(int vertex) 
+```
+Runtime = &theta;(n + m) --> O(n)
+
+## Q4 - Topological Sort
+**Compilation Instructions**
+```bash
+# run main target (provided sample input)
+bazel run q4:main
+
+# run test target
+bazel run tests:tests
+```
+
+**Runtime Analysis**
+```c++
+std::pair<std::vector<int>, std::vector<int>> Graph::topological_sort()
+```
+Runtime = &theta;(n + n + n + m) --> O(n)
+
+## Q5 - Find Nodes in Shortest Path 
+**Compilation Instructions**
+```bash
+# run main target (provided sample input)
+bazel run q5:main
+
+# run test target
+bazel run tests:tests
+```
+
+**Runtime Analysis**
+```c++
+std::vector<bool> nodes_in_path(Graph& g)
+
+```
+Runtime = &theta;(2*(n + m) + n) --> O(n)
